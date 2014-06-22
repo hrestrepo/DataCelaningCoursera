@@ -1,0 +1,4 @@
+The attached R script (run_analysis.R) performs the following to clean up the data:
+
+1.Merges the training and the test sets to create one data set.
+En esta parte se cargan los datos de acuerdo a la fuente de donde se obtuvieron.  Para lo cual se cargan los datos  
