@@ -1,4 +1,24 @@
 The attached R script (run_analysis.R) performs the following to clean up the data:
 
 1.Merges the training and the test sets to create one data set.
-En esta parte se cargan los datos de acuerdo a la fuente de donde se obtuvieron.  Para lo cual se cargan los datos  
+En esta parte se cargan los datos de acuerdo a la fuente de donde se obtuvieron.  
+Para lo cual se cargan los datos de training y los datos de test.
+
+Una vez cargados, se unen los de X, los de Y y los de Subjects.  Obteniendo asi 3 grupos de datos.
+
+2. Extracts only the measurements on the mean and standard deviation for each measurement.
+En esta parte se identifican todos los datos en cuya descripcion se tiene "mean" o "std".
+
+Primero se cargan los datos de "features"
+
+features = read.csv("UCI HAR Dataset/features.txt", sep="", header=FALSE)
+
+Posteriormente se identican los datos solicitados:
+meanStdIndices <- grep("mean\\(\\)|std\\(\\)", features[, 2])
+
+Iditificados cuales son los datos, se procede a extraer los datos que nos interesan,
+esto se logra con la instrucción:
+X<-X[,meanStdIndices]
+
+
+
