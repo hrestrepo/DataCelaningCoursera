@@ -20,5 +20,25 @@ Iditificados cuales son los datos, se procede a extraer los datos que nos intere
 esto se logra con la instrucción:
 X<-X[,meanStdIndices]
 
+Se depuran los nombres de las columnas y se adicionan al conjunto de datos de X.
+names(X) <- gsub("\\(|\\)", "", names(X))
+
+3. Uses descriptive activity names to name the activities in the data set
+Se leen las etiquetas de las actividades usando la instruccion:
+activityLabels = read.csv("UCI HAR Dataset/activity_labels.txt", sep="", header=FALSE)
+
+Se agregan al conjunto de datos de Y:
+Y[,1] = activityLabels[Y[,1], 2]
+
+4. Appropriately labels the data set with descriptive activity names.
+Se combinan los 3 grupos de datos usando: DataCleaned <- cbind(S,Y,X) . Hasta este punto ya tenemos
+los datos depurados.
+
+Ahora se exportan write.table(DataCleaned, "DataCleaned.txt")
+
+5. Creates a 2nd, independent tidy data set with the average of each variable for each activity and each subject.
+
+Se genera el tidy data solicitado.
+
 
 
